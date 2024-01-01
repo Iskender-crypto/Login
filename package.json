@@ -38,7 +38,7 @@
     "@tiptap/pm": "^2.0.3",
     "@tiptap/starter-kit": "^2.0.3",
     "@tiptap/vue-3": "^2.0.3",
-    "@unocss/nuxt": "^0.53.1",
+    "@unocss/nuxt": "^0.58.2",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitest/ui": "^0.32.2",
     "@vueuse/nuxt": "^10.2.0",
