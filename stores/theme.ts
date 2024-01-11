@@ -9,7 +9,7 @@ export const useThemeStore = defineStore('theme', {
   state: () => ({
     themeName: 'vela',
     themeColor: 'blue',
-    link: 'https://cdn.jsdelivr.net/npm/primevue@latest/resources/themes/vela-blue/theme.css'
+    link: 'https://cdn.jsdelivr.net/npm/primevue@latest/resources/themes/saga-blue/theme.css'
   }),
   // optional getters
   getters: {

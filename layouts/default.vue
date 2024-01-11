@@ -1,78 +1,83 @@
 <script setup lang='ts'>
-import { computed, watch, ref } from 'vue'
-
+import { watch, computed } from 'vue'
 import { useThemeStore } from '~/stores'
-import AppMenu from '~/components/app/AppMenu.vue'
-const { layoutConfig, layoutState, isSidebarActive } = useLayout()
-const outsideClickListener = ref(null)
 const themeStore = useThemeStore()
-watch(isSidebarActive, (newVal) => {
-  if (newVal) {
-    bindOutsideClickListener()
-  } else {
-    unbindOutsideClickListener()
-  }
-})
-const containerClass = computed(() => {
-  return {
-    'layout-theme-light': layoutConfig.darkTheme.value === 'light',
-    'layout-theme-dark': layoutConfig.darkTheme.value === 'dark',
-    'layout-overlay': layoutConfig.menuMode.value === 'overlay',
-    'layout-static': layoutConfig.menuMode.value === 'static',
-    'layout-static-inactive': layoutState.staticMenuDesktopInactive.value && layoutConfig.menuMode.value === 'static',
-    'layout-overlay-active': layoutState.overlayMenuActive.value,
-    'layout-mobile-active': layoutState.staticMenuMobileActive.value,
-    'p-input-filled': layoutConfig.inputStyle.value === 'filled',
-    'p-ripple-disabled': !layoutConfig.ripple.value
-  }
-})
 
-const bindOutsideClickListener = () => {
-  if (!outsideClickListener.value) {
-    outsideClickListener.value = (event) => {
-      if (isOutsideClicked(event)) {
-        layoutState.overlayMenuActive.value = false
-        layoutState.staticMenuMobileActive.value = false
-        layoutState.menuHoverActive.value = false
-      }
+const products = ref([
+  {
+    title: 'У нас дешевле',
+    backgroundImage: 'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2067&q=80',
+    description: 't is a long established fact that a reader will be distracted by the readable content'
+  },
+  {
+    title: 'У нас дешевле',
+    backgroundImage: 'https://images.unsplash.com/photo-1542407424724-5426773d65a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80',
+    description: 't is a long established fact that a reader will be distracted by the readable content'
+  },
+  {
+    title: 'У нас дешевле',
+    backgroundImage: '/img/backgraound.png',
+    description: 't is a long established fact that a reader will be distracted by the readable content'
+  }
+])
+const black = ref()
+const content = ref()
+
+onMounted(() => {
+  const contentHeight = content.value.scrollHeight
+  const blackHeight = black.value.scrollHeight
+  if (document.body.getBoundingClientRect().width > 768) {
+    if (contentHeight <= blackHeight - (blackHeight - contentHeight)) {
+      black.value.style.height = '100dvh'
+    } else {
+      black.value.style.height = 'auto'
     }
-
-    document.addEventListener('click', outsideClickListener.value)
+  } else if (contentHeight < blackHeight - (blackHeight - contentHeight)) {
+    black.value.style.height = '100dvh'
+  } else {
+    black.value.style.height = 'auto'
   }
 }
-
-const unbindOutsideClickListener = () => {
-  if (outsideClickListener.value) {
-    document.removeEventListener('click', outsideClickListener)
-    outsideClickListener.value = null
-  }
-}
-
-const isOutsideClicked = (event) => {
-  const sidebarEl = document.querySelector('.layout-sidebar')
-  const topbarEl = document.querySelector('.layout-menu-button')
-
-  return !(sidebarEl.isSameNode(event.target) || sidebarEl.contains(event.target) || topbarEl.isSameNode(event.target) || topbarEl.contains(event.target))
-}
+)
 </script>
-
 <template>
   <div>
-    <Link rel="stylesheet" :href="themeStore.link || 'https://cdn.jsdelivr.net/npm/primevue@3.15.0/resources/themes/vela-blue/theme.css'" />
-    <div class="layout-wrapper" :class="containerClass">
-      <app-topbar />
-      <div class="layout-sidebar">
-        <app-menu />
-      </div>
-      <div class="layout-main-container">
-        <div class="layout-main">
+    <div ref="black" class="p-3 bg-black ">
+      <div ref="content" class="grid align-items-stretch h-full">
+        <Link rel="stylesheet" :href="themeStore.link" />
+        <div class="col-12 md:col-6 xl:col-8 h-full md:h-auto ">
+          <div class="relative h-full">
+            <Carousel :value="products" :num-visible="1" :num-scroll="1" class="carousel h-full">
+              <template #item="slotProps">
+                <div class="banner-image" :style="`background-image: url('${slotProps.data.backgroundImage}');`" />
+              </template>
+            </Carousel>
+            <div class="absolute carousel-icons flex align-items-center">
+              <i class="cursor-pointer text-2xl mr-3 pi pi-instagram text-white" />
+              <i class="cursor-pointer text-2xl mr-3 pi pi-github text-white" />
+              <i class="cursor-pointer text-2xl mr-3 pi pi-facebook text-white" />
+            </div>
+            <div class="absolute carousel-content">
+              <h1 class="text-white font-semibold text-5xl sm:text-7xl mt-8 md:mt-0 pt-8 md:pt-0">
+                У нас дешевле
+              </h1>
+              <p class="text-white font-medium text-base sm:text-xl">
+                t is a long established fact that a reader will be distracted by the readable content
+              </p>
+              <div class="flex align-items-center">
+                <i class="mr-2 sm:mr-3 text-base sm:text-xl pi pi-star-fill text-white" />
+                <i class="mr-2 sm:mr-3 text-base sm:text-xl pi pi-star-fill text-white" />
+                <i class="mr-2 sm:mr-3 text-base sm:text-xl pi pi-star-fill text-white" />
+                <i class="mr-2 sm:mr-3 text-base sm:text-xl pi pi-star-fill text-white" />
+                <i class="mr-2 sm:mr-3 text-base sm:text-xl pi pi-star-fill text-gray-800" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 md:col-6 xl:col-4">
           <slot />
         </div>
-        <app-footer />
       </div>
-      <div class="layout-mask" />
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped></style>

@@ -1,0 +1,40 @@
+.banner-image{
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  padding: 30px 50px;
+  padding-bottom: 60px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  @media screen and (max-width: 768px){
+    height: 400px;
+  }
+  @media screen and (max-width: 576px){
+    padding: 25px 25px;
+    padding-bottom: 40px;
+  }
+
+}
+
+
+
+.cursor-hover{
+
+}
+.bg-black .grid .col-12,
+.bg-black .grid .md\:col-6,
+.bg-black .grid .xl\:col-4{
+  padding-bottom: 0 !important;
+}
+
+//.bg-black .grid{
+//  @media screen and (min-height: 800px){
+//    background: red;
+//    .bg-black{
+//      height: auto !important;
+//    }
+//  }
+//}

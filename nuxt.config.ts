@@ -1,7 +1,7 @@
 import pkg from './package.json'
 
 export default defineNuxtConfig({
-  devtools: true,
+  devtools: false,
   ssr: true,
   runtimeConfig: {
     public: {
@@ -23,7 +23,6 @@ export default defineNuxtConfig({
       theme: 'one-dark-pro',
       preload: ['json', 'js', 'ts', 'html', 'css', 'vue']
     }
-    // Options
   },
   i18n: {
     lazy: true,
@@ -55,10 +54,9 @@ export default defineNuxtConfig({
     }
   },
   css: [
-    'primevue/resources/primevue.css',
-    'primeicons/primeicons.css',
     '@sfxcode/formkit-primevue/dist/sass/formkit-prime-inputs.scss',
-    '@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss'
+    '@sfxcode/formkit-primevue/dist/sass/formkit-primevue.scss',
+    'primevue/resources/themes/lara-light-blue/theme.css'
   ],
   pinia: {
     autoImports: [
@@ -67,7 +65,7 @@ export default defineNuxtConfig({
     ]
   },
   build: {
-    transpile: ['nuxt', 'primevue']
+    transpile: ['nuxt', 'primevue', 'primeblocks']
   },
   sourcemap: {
     client: false,

@@ -1,11 +1,27 @@
 // Suggested location to add your overrides so that migration would be easy by just updating the SASS folder in the future
-
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Gilroy';
+}
 a {
   outline: none !important;
   box-shadow: none !important;
   color: var(--primary-color);
 }
+html,body{
+  overflow: hidden;
+  height: auto;
+}
 
+
+@media screen and (max-width: 768px){
+  body,html{
+    height: auto !important;
+    overflow: auto;
+  }
+}
 button {
   outline: none !important;
   box-shadow: none !important;
@@ -19,3 +35,30 @@ button {
   margin-top: 10px;
 }
 
+.surface-card{
+  width: 100% !important;
+  border-radius: 40px !important;
+}
+.login-card{
+  .p-inputtext{
+    background: #F5F6FA !important;
+    border-radius: 53.764px !important;
+    border: none;
+    color: black !important;
+    &:hover{
+      background: #F1F2F4 !important;
+    }
+  }
+  .p-inputtext:enabled:focus{
+    background: #F1F2F4 !important;
+    box-shadow: none;
+    border: none;
+  }
+}
+.p-inputtext{
+  width: 100%;
+}
+
+.cursor-hover{
+
+}

@@ -1,0 +1,35 @@
+.starter-button{
+  border: none !important;
+  color: black !important;
+  background: white !important;
+  &:hover{
+    background: #e5e5e5 !important;
+  }
+}
+
+
+.login-button{
+  border: none;
+  border-radius: 53.764px;
+  background: #050F19;
+  &:hover{
+    background: #252D35 !important;
+  }
+}
+
+.btn-account{
+  .p-button{
+    background: #F5F6FA !important;
+    border-radius: 53.764px !important;
+    border: none;
+    color: black !important;
+    &:hover{
+      background: #BBBEC8 !important;
+    }
+  }
+  .p-button:enabled:focus{
+    background: #F1F2F4 !important;
+    box-shadow: none;
+    border: none;
+  }
+}

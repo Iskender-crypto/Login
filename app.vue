@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 useHead({
-  title: 'Nuxt 3 PrimeVue Starter'
+  title: 'Login'
 })
 </script>
 
@@ -10,6 +10,6 @@ useHead({
   </NuxtLayout>
 </template>
 
-<style lang='scss'>
-@import 'App.scss';
+<style lang="scss">
+@import "App.scss";
 </style>

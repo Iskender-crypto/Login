@@ -1,0 +1,101 @@
+.carousel{
+  position: relative;
+
+  .p-carousel-content,
+  .p-carousel-container,
+  .p-carousel-items-content,
+  .p-carousel-items-container,
+  .p-carousel-item {
+    height: 100% !important;
+  }
+
+  .p-carousel-items-content {
+    border-radius: 43px;
+  }
+
+    .p-carousel-prev{
+    position: absolute;
+    bottom: 20px;
+    right: 100px;
+    color: white !important;
+    border-radius: 12px !important;
+    border: 1px solid white !important;
+    width: 43.889px !important;
+    height: 43.889px !important;
+    z-index: 1000;
+      &:hover{
+        color: black !important;
+      }
+
+      @media screen and (max-width: 576px){
+        right: 60px;
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 7px !important;
+      }
+  }
+
+  .p-carousel-next{
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    color: white !important;
+    border-radius: 12px !important;
+    border: 1px solid white !important;
+    width: 43.889px !important;
+    height: 43.889px !important;
+    z-index: 1000;
+    &:hover{
+      color: black !important;
+    }
+    @media screen and (max-width: 576px){
+      right: 15px;
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 7px !important;
+    }
+  }
+
+  .p-carousel-indicators{
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    padding: 0;
+    @media screen and (max-width: 576px){
+      bottom: 14px;
+      left: 30px;
+    }
+  }
+
+  .p-carousel-indicator button{
+    background: gray !important;
+    height: 4px !important;
+    width: 50px !important;
+    border-radius: 1px !important;
+    margin-right: 10px !important;
+
+    @media screen and (max-width: 576px){
+      height: 3px !important;
+      width: 25px !important;
+      margin-right: 5px !important;
+    }
+  }
+  .p-carousel-indicator.p-highlight button{
+    background: white !important;
+  }
+}
+.carousel-icons{
+  top: 30px;
+  left: 50px;
+  @media screen and (max-width: 576px){
+    left: 30px;
+  }
+}
+.carousel-content{
+  bottom: 60px;
+  left: 50px;
+  @media screen and (max-width: 576px){
+    left: 30px;
+    bottom: 40px;
+  }
+}
