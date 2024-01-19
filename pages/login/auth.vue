@@ -51,7 +51,7 @@ const signIn = async () => {
     return
   }
   try {
-    const { data } = await axios.post('https://localhost:5232/User/Authenticate', loginUser)
+    const { data } = await axios.post('https://localhost:5200/User/Authenticate', loginUser)
     userStore.user = data
     await router.push('/')
     await showSuccess()
