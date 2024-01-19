@@ -100,7 +100,7 @@ const submit = async () => {
     return
   }
   try {
-    const { data } = await axios.post('https://localhost:7123/User/Registration', model)
+    const { data } = await axios.post('https://localhost:5232/User/Registration', model)
     userStore.user = data
     router.push('/')
     showSuccess()
